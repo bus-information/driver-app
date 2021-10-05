@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">testapp</string>
+    <string name="title">運転手用アプリ</string>
+    <string name="now_pojit">現在位置</string>
+    <string name="drive_start">運行を開始</string>
+    <string name="select">路線選択</string>
+    <string name="route_c">高梨方面C</string>
+    <string name="route_d">高梨方面D</string>
+    <string name="route_b">高梨方面B</string>
+    <string name="route_a">高梨方面A</string>
+    <string name="start_button">運行を開始する場合下のボタンを押してください</string>
+</resources>
