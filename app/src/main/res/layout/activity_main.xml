@@ -98,7 +98,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/get_button"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="@string/drive_start"
