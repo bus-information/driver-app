@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@color/white"
-        tools:ignore="ContentDescription,MissingConstraints"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="370dp" />
 
     <TextView
@@ -51,7 +51,7 @@
             android:id="@+id/radioButton2"
             android:layout_width="188dp"
             android:layout_height="56dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:backgroundTint="#FFFFFF"
             android:buttonTint="#000000"
             android:text="@string/route_a"
@@ -64,7 +64,7 @@
             android:id="@+id/radioButton3"
             android:layout_width="188dp"
             android:layout_height="56dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:buttonTint="#000000"
             android:text="@string/route_b"
             android:textAlignment="center"
@@ -76,7 +76,7 @@
             android:id="@+id/radioButton4"
             android:layout_width="188dp"
             android:layout_height="56dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:buttonTint="#000000"
             android:text="@string/route_c"
             android:textAlignment="center"
@@ -88,7 +88,7 @@
             android:id="@+id/radioButton5"
             android:layout_width="188dp"
             android:layout_height="55dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp"
             android:buttonTint="#000000"
             android:text="@string/route_d"
             android:textAlignment="center"
@@ -98,7 +98,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/get_button"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="@string/drive_start"

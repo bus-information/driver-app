@@ -1,4 +1,4 @@
-package com.example.driver_app
+package com.example.getlatestlocation
 
 import android.Manifest
 import android.content.pm.PackageManager
