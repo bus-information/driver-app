@@ -170,15 +170,6 @@
 
 
 
-<!--    <com.google.android.gms.maps.MapView-->
-<!--        android:id="@+id/mapView2"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="181dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"-->
-<!--        tools:layout_editor_absoluteY="441dp" />-->
 
 
 
