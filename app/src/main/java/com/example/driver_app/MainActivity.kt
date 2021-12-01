@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
                     if (a==1) {
                         if (it != null) {
                             Toast.makeText(this, "${it.latitude} \n ${it.longitude}", Toast.LENGTH_SHORT).show()
-                            val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+                            val radioGroup = findViewById<RadioGroup>(R.id.RadioGroup)
                             val id = radioGroup.checkedRadioButtonId
                             val checkedRadioButton = findViewById<RadioButton>(id)
                             val user = hashMapOf(
