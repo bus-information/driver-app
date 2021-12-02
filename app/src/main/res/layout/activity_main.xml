@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,20 +8,8 @@
     android:background="#dfe4ea"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="417dp"
-        android:layout_height="261dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@color/white"
-        tools:ignore="ContentDescription,MissingConstraints"
-        tools:layout_editor_absoluteY="370dp" />
-
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:id="@+id/header_title"
         android:background="#2d3436"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
@@ -29,28 +18,31 @@
         android:textColor="#ffffff"
         android:textSize="25sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.8"
         tools:ignore="RtlCompat" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="405dp"
-        android:layout_height="227dp"
-        android:layout_marginTop="132dp"
+        android:id="@+id/RadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
         android:background="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/header_title"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.07" >
 
         <RadioButton
             android:id="@+id/radioButton2"
-            android:layout_width="188dp"
-            android:layout_height="56dp"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_marginStart="100dp"
             android:backgroundTint="#FFFFFF"
             android:buttonTint="#000000"
@@ -62,8 +54,8 @@
 
         <RadioButton
             android:id="@+id/radioButton3"
-            android:layout_width="188dp"
-            android:layout_height="56dp"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_marginStart="100dp"
             android:buttonTint="#000000"
             android:text="@string/route_b"
@@ -74,8 +66,8 @@
 
         <RadioButton
             android:id="@+id/radioButton4"
-            android:layout_width="188dp"
-            android:layout_height="56dp"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
             android:layout_marginStart="100dp"
             android:buttonTint="#000000"
             android:text="@string/route_c"
@@ -86,44 +78,29 @@
 
         <RadioButton
             android:id="@+id/radioButton5"
-            android:layout_width="188dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="100dp"
             android:buttonTint="#000000"
             android:text="@string/route_d"
             android:textAlignment="center"
             android:textColor="#fdcb6e"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="100dp"/>
     </RadioGroup>
 
-    <Button
-        android:id="@+id/get_button"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:text="@string/drive_start"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:backgroundTint="#00b894"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="417dp"
+        android:layout_height="261dp"
+        android:background="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:text="@string/start_button"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/RadioGroup"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2"
+        tools:ignore="ContentDescription,MissingConstraints"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -133,23 +110,55 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.172" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView2"
-        android:layout_width="300dp"
-        android:layout_height="181dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/mapView"
+        app:layout_constraintTop_toTopOf="@+id/image"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-        tools:layout_editor_absoluteY="441dp" />
+        app:layout_constraintVertical_bias="0.04" />
 
+    <fragment
+        android:id="@+id/mapView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="330dp"
+        android:layout_height="198dp"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.1"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_button"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintBottom_toBottomOf="@+id/toggleButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="190dp"
+        android:layout_height="70dp"
+        android:text="@string/togglebutton"
+        android:textColor="#455A64"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
