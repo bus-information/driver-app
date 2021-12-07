@@ -22,6 +22,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.GeoPoint
 import java.security.MessageDigest
 import com.google.firebase.firestore.SetOptions
 import java.time.LocalDateTime
@@ -173,8 +174,7 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
                             val id = radioGroup.checkedRadioButtonId
                             val checkedRadioButton = findViewById<RadioButton>(id)
                             val bus = hashMapOf(
-                                "latitude" to "${it.latitude}",
-                                "longitude" to "${it.longitude}",
+                                "locate" to GeoPoint(it.latitude, it.longitude),
                                 "timeStamp" to (nowTime.hour * 3600 + nowTime.minute * 60 + nowTime.second)
                             )
                             println(checkedRadioButton.text)
