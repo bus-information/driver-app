@@ -22,7 +22,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.MarkerOptions
-
+import java.security.MessageDigest
+import com.google.firebase.firestore.SetOptions
+import java.time.LocalDateTime
 
 
 @SuppressLint("StaticFieldLeak")
@@ -31,6 +33,7 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var callback: LocationCallback
     var a=0
+    var busId = ""
     private val handler = Handler()
     private lateinit var mMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +57,28 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
 
         getButton.setOnCheckedChangeListener  { _, isChecked ->
             if (isChecked) {
+                val radioGroup = findViewById<RadioGroup>(R.id.RadioGroup)
+                val id = radioGroup.checkedRadioButtonId
+                val checkedRadioButton = findViewById<RadioButton>(id)
                 a=1
+                busId = MessageDigest.getInstance("SHA-256")
+                    .digest((checkedRadioButton.text.toString() + (1..1000).random().toString()).toByteArray())
+                    .joinToString(separator = "") {
+                        "%02x".format(it)
+                    }
+
+                val bus = hashMapOf(
+                    "stationsId" to checkedRadioButton.text,
+                    "arrivalTimeId" to MessageDigest.getInstance("SHA-256")
+                        .digest((checkedRadioButton.text.toString() + (1..1000).random().toString()).toByteArray())
+                        .joinToString(separator = "") {
+                            "%02x".format(it)
+                        }
+                )
+                db.collection("bus")
+                    .document(busId).set(bus)
+                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
                 Timer().schedule(0, 1000, timerCallback1)
             }
             else if(!isChecked){
@@ -139,31 +163,24 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
                     101
                 )
             }
-
             else {
-                latestLocation.addOnSuccessListener {
-
+                val nowTime = LocalDateTime.now()
+                latestLocation.addOnSuccessListener() {
                     if (a==1) {
                         if (it != null) {
                             Toast.makeText(this, "${it.latitude} \n ${it.longitude}", Toast.LENGTH_SHORT).show()
                             val radioGroup = findViewById<RadioGroup>(R.id.RadioGroup)
                             val id = radioGroup.checkedRadioButtonId
                             val checkedRadioButton = findViewById<RadioButton>(id)
-                            val user = hashMapOf(
+                            val bus = hashMapOf(
                                 "latitude" to "${it.latitude}",
                                 "longitude" to "${it.longitude}",
-                                "going" to checkedRadioButton.text
+                                "timeStamp" to (nowTime.hour * 3600 + nowTime.minute * 60 + nowTime.second)
                             )
                             println(checkedRadioButton.text)
                             // Add a new document with a generated ID
-                            db.collection("users")
-                                .add(user)
-                                .addOnSuccessListener { documentReference ->
-                                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                                }
-                                .addOnFailureListener { e ->
-                                    Log.w(TAG, "Error adding document", e)
-                                }
+                            db.collection("bus")
+                                .document(busId).set(bus, SetOptions.merge())
                         }
                     }
                     else if(a==0){
@@ -187,7 +204,5 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         }
     }
-
-
 }
 
