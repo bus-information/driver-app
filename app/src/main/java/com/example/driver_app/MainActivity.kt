@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.GeoPoint
 import java.security.MessageDigest
@@ -35,12 +36,16 @@ class MainActivity : AppCompatActivity(),OnMapReadyCallback  {
     private lateinit var callback: LocationCallback
     var a=0
     var busId = ""
-    //private val handler = Handler()
+    private val handler = Handler()
     private lateinit var mMap: GoogleMap
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.mapView) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+        //val mHandler = Handler()
         var x = 0
         val getButton: ToggleButton = findViewById(R.id.toggleButton)
         var timerCallback1: TimerTask.() -> Unit = {
